@@ -1,7 +1,6 @@
 from peewee import *
+from config_db import db
 from validator import EmailField
-
-db = PostgresqlDatabase('iot_db', user='postgres', password='secret')
 
 
 class BaseModel(Model):
