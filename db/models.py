@@ -22,8 +22,8 @@ class Location(BaseModel):
 
 
 class Device(BaseModel):
-    user_id = ForeignKeyField(User.id, backref='devices')
-    location_id = ForeignKeyField(Location.id, backref='devices')
+    user_id = ForeignKeyField(User, backref='devices')
+    location_id = ForeignKeyField(Location, backref='devices')
 
     name = CharField(max_length=50)
     type = CharField(max_length=25)
