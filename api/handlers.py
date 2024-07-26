@@ -174,7 +174,7 @@ async def update_device(request):
 async def get_device(request):
     """
     ---
-    description: Get a device by user ID.
+    description: Get a device by ID.
     tags:
     - Devices
     produces:
@@ -184,20 +184,19 @@ async def get_device(request):
       name: id
       required: true
       type: integer
-      description: The user ID
+      description: The device ID
     responses:
         "200":
-            description: A list of devices for the user
+            description: Device details in JSON format
         "400":
             description: Bad request
     """
     db.connect()
-    user_id = request.match_info.get('id')
-    devices = Device.select().where(Device.user_id == user_id)
+    try:
+        device_id = request.match_info.get('id')
+        device = Device.get(Device.id == device_id)
 
-    devices_list = []
-    for device in devices:
-        devices_list.append({
+        device_data = {
             "id": device.id,
             "user_id": device.user_id.id,
             "location_id": device.location_id.id,
@@ -205,10 +204,18 @@ async def get_device(request):
             "type": device.type,
             "login": device.login,
             "password": device.password
-        })
-    db.close()
+        }
 
-    return web.Response(text=json.dumps(devices_list), content_type='application/json')
+        db.close()
+        return web.json_response(device_data, status=200)
+
+    except Device.DoesNotExist:
+        db.close()
+        return web.json_response({"error": "Device not found"}, status=404)
+
+    except Exception as e:
+        db.close()
+        return web.json_response({"error": str(e)}, status=500)
 
 
 async def delete_device(request):
