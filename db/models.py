@@ -1,6 +1,6 @@
 from peewee import *
-from config_db import db
-from validator import EmailField
+from db.config_db import db
+from db.validator import EmailField
 
 
 class BaseModel(Model):
