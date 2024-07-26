@@ -2,8 +2,8 @@
 
 1. Clone repo:
 
-* Clone with SSH `git@github.com:Danil1994/iot_devices.git`.
-* Clone with HTTPS `https://github.com/Danil1994/iot_devices.git`.
+* Clone with SSH `git clone git@github.com:Danil1994/iot_devices.git`.
+* Clone with HTTPS `git clone https://github.com/Danil1994/iot_devices.git`.
 
 2. Go to your project folder: `path/to/the/folder`.
 3. Load your .env file to the project like .env.example.
