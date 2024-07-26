@@ -2,6 +2,9 @@ from aiohttp import web
 from aiohttp_swagger import *
 from api.handlers import all_device, create_device, update_device, get_device, delete_device
 
+from db.init_db import initialize_database
+
+initialize_database()
 
 app = web.Application()
 
