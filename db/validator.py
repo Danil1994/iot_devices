@@ -1,5 +1,6 @@
-from peewee import *
 import re
+
+from peewee import *
 
 
 class EmailField(CharField):

@@ -1,4 +1,5 @@
 from peewee import *
+
 from db.config_db import db
 from db.validator import EmailField
 

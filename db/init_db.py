@@ -1,5 +1,5 @@
 from config_db import db
-from models import User, Location, Device
+from models import Device, Location, User
 
 
 def initialize_database():

@@ -2,8 +2,9 @@ import json
 
 from aiohttp import web
 from aiohttp_swagger import *
+
 from db.config_db import db
-from db.models import Device, User
+from db.models import Device
 
 
 async def all_device(request):
@@ -245,11 +246,11 @@ async def delete_device(request):
 app = web.Application()
 
 app.add_routes([
-    web.get("/devices", all_device),
+    web.get('/devices', all_device),
     web.post('/devices', create_device),
     web.get('/devices/{id}', get_device),
     web.put('/devices/{id}', update_device),
-    web.delete('/devices/{id}', delete_device)
+    web.delete('/devices/{id}', delete_device),
 ])
 
 setup_swagger(app, swagger_url="/api/v1/doc", ui_version=2)

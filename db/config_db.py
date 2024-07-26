@@ -1,10 +1,14 @@
+import os
+
+from dotenv import load_dotenv
 from peewee import PostgresqlDatabase
 
+load_dotenv()
 
 db = PostgresqlDatabase(
-    'iot',
+    os.getenv('DATABASE'),
     user='postgres',
-    password='secret',
+    password=os.getenv('DATABASW_PASSWORD'),
     host='localhost',
     port=5432
 )

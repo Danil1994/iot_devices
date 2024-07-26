@@ -1,7 +1,8 @@
 import random
-from faker import Faker
+
 from config_db import db
-from models import User, Location, Device
+from faker import Faker
+from models import Device, Location, User
 
 fake = Faker()
 
