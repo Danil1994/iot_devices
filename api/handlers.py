@@ -2,6 +2,16 @@ import json
 from aiohttp import web
 from db.config_db import db
 from db.models import Device
+from contextlib import asynccontextmanager
+
+
+@asynccontextmanager
+async def get_db_connection():
+    db.connect()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 async def all_device(request):
@@ -77,18 +87,17 @@ async def create_device(request):
         "400":
             description: Bad request
     """
-    db.connect()
     try:
         data = await request.json()
-        device = Device.create(
-            user_id=data['user_id'],
-            location_id=data['location_id'],
-            name=data['name'],
-            type=data['type'],
-            login=data['login'],
-            password=data['password']
-        )
-        db.close()
+        async with get_db_connection() as db:
+            device = Device.create(
+                user_id=data['user_id'],
+                location_id=data['location_id'],
+                name=data['name'],
+                type=data['type'],
+                login=data['login'],
+                password=data['password']
+            )
         return web.json_response({
             "id": device.id,
             "user_id": device.user_id.id,
@@ -99,8 +108,10 @@ async def create_device(request):
             "password": device.password
         }, status=201)
     except Exception as e:
-        db.close()
-        return web.json_response({"error": str(e)}, status=400)
+        return web.json_response({"error": str(e)})
+    finally:
+        if not db.is_closed():
+            db.close()
 
 
 async def update_device(request):
@@ -167,9 +178,10 @@ async def update_device(request):
             "password": device.password
         }, status=200)
     except Exception as e:
-        db.close()
         return web.json_response({"error": str(e)}, status=400)
-
+    finally:
+        if not db.is_closed():
+            db.close()
 
 async def get_device(request):
     """

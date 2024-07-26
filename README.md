@@ -5,20 +5,20 @@
 * Clone with SSH `git clone git@github.com:Danil1994/iot_devices.git`.
 * Clone with HTTPS `git clone https://github.com/Danil1994/iot_devices.git`.
 
-2. Go to your project folder: `path/to/the/folder`.
-3. Load your .env file to the project like .env.example.
-4. Install requirements.txt run: `pip install -r requirements.txt`.
-5. Create database and configure connection parameters.
-6. Run `python create_fake_data.py` to create fake data.
+1. Go to your project folder: `path/to/the/folder`.
+2. Load your .env file to the project like .env.example.
+3. Install requirements.txt run: `pip install -r requirements.txt`.
+4. Create database and configure connection parameters.
 
 ## Run
 
 1. Run server: `python app.py`
-2. Go to link `http://127.0.0.1:8080/api/v1/doc#/Devices` in your browser.
+2. Run `python create_fake_data.py` to create fake data.
+3Go to link `http://127.0.0.1:8080/api/v1/doc#/Devices` in your browser.
 
 ## Using
 
-Приложение поддерживает базовые CRUD операции.
+Application use basic CRUD operations.
 
 * GET `/devices` retrieve all devices.
 * POST `/devices` create a new device.
