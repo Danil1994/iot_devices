@@ -9,6 +9,6 @@ db = PostgresqlDatabase(
     os.getenv('DATABASE', 'iot'),
     user=os.getenv('DATABASE_USER', 'postgres'),
     password=os.getenv('DATABASE_PASSWORD', 'secret'),
-    host=os.getenv('DATABASE_HOST', 'db'),
+    host=os.getenv('DATABASE_HOST', 'localhost'),
     port=5432
 )

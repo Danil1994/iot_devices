@@ -31,7 +31,7 @@ asynchronous API.
 
 Application use basic CRUD operations.
 
-* GET `/devices` retrieve all devices.
+* GET `/` retrieve all devices.
 * POST `/devices` create a new device.
 * GET `/devices/{id}` get a device by ID.
 * PUT `/devices/{id}` update an existing device.

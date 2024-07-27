@@ -9,7 +9,7 @@ initialize_database()
 app = web.Application()
 
 app.add_routes([
-    web.get('/devices', all_device),
+    web.get('/', all_device),
     web.post('/devices', create_device),
     web.get('/devices/{id}', get_device),
     web.put('/devices/{id}', update_device),
