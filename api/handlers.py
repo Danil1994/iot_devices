@@ -183,6 +183,7 @@ async def update_device(request):
         if not db.is_closed():
             db.close()
 
+
 async def get_device(request):
     """
     ---
