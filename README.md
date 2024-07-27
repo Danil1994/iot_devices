@@ -17,9 +17,10 @@ asynchronous API.
 
 1. Go to your project folder: `path/to/the/folder`
 2. Create and activate a virtual environment
-3. Load your .env file to the project like .env.example
-4. Install requirements.txt run: `pip install -r requirements.txt`
-5. Create database PostgreSQL and configure connection parameters
+3. Create database PostgreSQL and configure connection parameters
+4. Load your .env file to the project like .env.example
+5. Install requirements.txt run: `pip install -r requirements.txt`
+
 
 ## Run
 
