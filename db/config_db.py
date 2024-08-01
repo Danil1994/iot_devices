@@ -6,9 +6,9 @@ from peewee import PostgresqlDatabase
 load_dotenv()
 
 db = PostgresqlDatabase(
-    os.getenv('DATABASE', 'iot'),
-    user=os.getenv('DATABASE_USER', 'postgres'),
-    password=os.getenv('DATABASE_PASSWORD', 'secret'),
-    host=os.getenv('DATABASE_HOST', 'localhost'),
+    os.getenv('DATABASE'),
+    user=os.getenv('DATABASE_USER'),
+    password=os.getenv('DATABASE_PASSWORD'),
+    host=os.getenv('DATABASE_HOST'),
     port=5432
 )
